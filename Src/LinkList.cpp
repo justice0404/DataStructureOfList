@@ -87,3 +87,99 @@ bool ListDelete(LinkList &L,int i,ElemType &e)
     return true;
 }
 
+//在指定节点后插入，存在问题，只是一个简单示例，用来删除中间节点
+bool InsertNextNode(LNode* p,ElemType e)
+{
+    if(p == NULL)
+    {
+        cout << "Invalid position input!" << endl;
+        return false;
+    }
+
+    LNode* s = (LNode*)malloc(sizeof(LNode));
+    s->data = e;
+    s->next = p->next;
+    p->next = s;
+
+    return true;
+}
+
+//在指定节点前插入
+bool InsertPriorNode(LNode* p,ElemType e)
+{
+    if(p == NULL)
+    {
+        cout << "Invalid position input!" << endl;
+        return false;
+    }
+    //交换数据域
+    LNode* q = (LNode*)malloc(sizeof(LNode));
+    q->next = p->next;
+    p->next = q;
+
+    q->data = p->data;
+    p->data = e;
+
+    return true;
+}
+
+//删除指定节点
+bool DeleteNode(LNode *p)
+{
+    if(p == NULL)
+    {
+        cout << "Invalid position input!" << endl;
+        return false;
+    }
+    LNode* q = p->next;
+    p->next = q->next;
+    free(q);
+
+    return true;
+}
+
+//获取第i个节点
+LNode* GetElem(LinkList L,int i)
+{
+    if(i < 0)
+    {
+        cout << "Invalid position input!" << endl;
+        return NULL;
+    }
+
+    LNode* p = (LNode*)malloc(sizeof(LNode));
+    int j = 0;
+    p = L;
+    while (p!=NULL && j<i)
+    {
+        /* code */
+        p = p->next;
+        j++;
+    }
+    
+    return p;
+}
+
+//获取数据域为e的节点
+LNode* LocateElem(LinkList L,ElemType e)
+{
+    LNode* p = L->next;
+    while (p != NULL || p->data != e)
+    {
+        p = p->next;
+    }
+    return p;
+}
+
+//获取表长
+int Length(LinkList L)
+{
+    int len = 0;
+    LNode* p = L;
+    while(p->next != NULL)
+    {
+        p = p->next;
+        len++;
+    }
+    return len;
+}
