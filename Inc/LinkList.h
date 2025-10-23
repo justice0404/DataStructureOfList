@@ -20,6 +20,7 @@ LNode* GetElem(LinkList L,int i);
 LNode* LocateElem(LinkList L,ElemType e);
 int Length(LinkList L);
 bool IsEmpty(LinkList L){ return (L->next == NULL); }
+void PrintfList(LinkList L);
 
 bool InsertNextNode(LNode* p,ElemType e);
 bool InsertPriorNode(LNode* p,ElemType e);
