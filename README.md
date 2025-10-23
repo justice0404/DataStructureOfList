@@ -4,4 +4,15 @@
 ---
 
 ## SqList
+
 ![](./SqList.png)
+
+---
+
+## LinkList
+
+![](./LinkList1.png)
+
+![](./LinkList2.png)
+
+![](./LinkList3.png)
